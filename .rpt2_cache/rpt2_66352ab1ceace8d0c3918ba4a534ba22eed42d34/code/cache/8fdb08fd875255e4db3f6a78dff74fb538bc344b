@@ -1,0 +1,7 @@
+{
+  "code": "import { __extends } from \"tslib\";\r\nimport BaseManager from \"./BaseManager\";\r\nvar UILayerManager = (function (_super) {\r\n    __extends(UILayerManager, _super);\r\n    function UILayerManager(channel) {\r\n        var _this = _super.call(this, channel) || this;\r\n        _this.mainUILayer = new Laya.Sprite();\r\n        _this.alertUILayer = new Laya.Sprite();\r\n        _this.tipUILayer = new Laya.Sprite();\r\n        return _this;\r\n    }\r\n    UILayerManager.prototype.setMainUILayerIndex = function (index) {\r\n        Laya.stage.addChild(this.mainUILayer);\r\n        this.mainUILayer.zOrder = index;\r\n    };\r\n    UILayerManager.prototype.setAlertUILayerIndex = function (index) {\r\n        Laya.stage.addChild(this.alertUILayer);\r\n        this.alertUILayer.zOrder = index;\r\n    };\r\n    UILayerManager.prototype.setTipUILayerIndex = function (index) {\r\n        Laya.stage.addChild(this.tipUILayer);\r\n        this.tipUILayer.zOrder = index;\r\n    };\r\n    return UILayerManager;\r\n}(BaseManager));\r\nexport default UILayerManager;\r\n",
+  "references": [
+    "D:/project/canting/canting/src/game/manager/BaseManager.ts",
+    "D:/project/canting/canting/src/game/controller/CommandChannel.ts"
+  ]
+}

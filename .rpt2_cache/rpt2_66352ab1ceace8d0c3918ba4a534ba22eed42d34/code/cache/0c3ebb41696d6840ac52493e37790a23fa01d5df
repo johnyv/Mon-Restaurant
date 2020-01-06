@@ -1,0 +1,4 @@
+{
+  "code": "import { __extends } from \"tslib\";\r\nvar BaseAnimation = (function (_super) {\r\n    __extends(BaseAnimation, _super);\r\n    function BaseAnimation() {\r\n        return _super.call(this) || this;\r\n    }\r\n    BaseAnimation.prototype.aniUrls = function (aniName, length) {\r\n        var urls = [];\r\n        for (var i = 0; i < length; i++) {\r\n            urls.push(this._prefix + aniName + \"_\" + i + \".png\");\r\n        }\r\n        return urls;\r\n    };\r\n    return BaseAnimation;\r\n}(Laya.Animation));\r\nexport default BaseAnimation;\r\n",
+  "references": []
+}

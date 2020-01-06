@@ -1,0 +1,6 @@
+{
+  "code": "var BaseManager = (function () {\r\n    function BaseManager(channel) {\r\n        if (channel === void 0) { channel = null; }\r\n        this.channel = channel;\r\n    }\r\n    BaseManager.prototype.init = function () {\r\n    };\r\n    BaseManager.prototype.destroy = function () {\r\n    };\r\n    return BaseManager;\r\n}());\r\nexport default BaseManager;\r\n",
+  "references": [
+    "D:/project/canting/canting/src/game/controller/CommandChannel.ts"
+  ]
+}

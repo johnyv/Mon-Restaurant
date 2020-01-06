@@ -1,6 +1,7 @@
 import GameConfig from "./GameConfig";
 import CommandChannel from "./game/controller/CommandChannel";
 import ConstName from "./game/ConstName";
+import Comp_scene_layer from "./component/Comp_scene_layer";
 class Main {
 	constructor() {
 		//根据IDE设置初始化引擎		
@@ -18,7 +19,7 @@ class Main {
 		if (GameConfig.physicsDebug && Laya["PhysicsDebugDraw"]) Laya["PhysicsDebugDraw"].enable();
 		if (GameConfig.stat) Laya.Stat.show();
 		Laya.alertGlobalError = true;
-
+		Laya.ClassUtils.regClass("component.Comp_scene_layer",Comp_scene_layer);
 		//激活资源版本控制，version.json由IDE发布功能自动生成，如果没有也不影响后续流程
 		Laya.ResourceVersion.enable("version.json", Laya.Handler.create(this, this.onVersionLoaded), Laya.ResourceVersion.FILENAME_VERSION);
 	}/*  */
@@ -32,7 +33,6 @@ class Main {
 		//加载IDE指定的场景
 		GameConfig.startScene && Laya.Scene.open(GameConfig.startScene);
 		CommandChannel.instance.init();
-		CommandChannel.instance.postCommand(ConstName.GAME_CONTROLLER,ConstName.TEST_COMMANDCHANNEL);
 	}
 }
 //激活启动类

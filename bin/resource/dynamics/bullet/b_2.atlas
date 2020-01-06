@@ -1,0 +1,42 @@
+{
+    "frames": {
+        "b_2_0.png": {
+            "frame": {
+                "h": 14,
+                "idx": 0,
+                "w": 17,
+                "x": 0,
+                "y": 0
+            },
+            "sourceSize": {
+                "h": 32,
+                "w": 32
+            },
+            "spriteSourceSize": {
+                "x": 7,
+                "y": 9
+            }
+        },
+        "b_2_1.png": {
+            "frame": {
+                "h": 14,
+                "idx": 0,
+                "w": 19,
+                "x": 18,
+                "y": 0
+            },
+            "sourceSize": {
+                "h": 32,
+                "w": 32
+            },
+            "spriteSourceSize": {
+                "x": 5,
+                "y": 9
+            }
+        }
+    },
+    "meta": {
+        "image": "b_2.png",
+        "prefix": "b_2/"
+    }
+}

@@ -3,7 +3,7 @@ import LoadManager from "../manager/LoadManager";
 import GameGlobal from "../GameGlobal";
 
 export default class GameAnimation extends BaseAnimation{
-    private  _url: string;
+    private  _loadUrl: string;
     private  _actionNameList: string[] = [];
     private  _actionFrame:Object = new Object();
     public static MODUL:string = "modul";
@@ -12,18 +12,18 @@ export default class GameAnimation extends BaseAnimation{
     //角色移动边界，上，下，左，右
     public  moveBoundsArr:number[] = [0,0,0,0];
 
-    public loadAtlas(url:string, loaded:Laya.Handler = null, cacheName:string = ""):Animation {
-        this._url = LoadManager.getUrl(url,GameGlobal.ROLE);
-        return this.loadAtlas(this._url,Laya.Handler.create(this, this.onLoaded));
+    public loadAtlas(url:string, loaded:Laya.Handler = null, cacheName:string = ""):Laya.Animation {
+        this._loadUrl = LoadManager.getUrl(url,GameGlobal.ROLE);
+        return super.loadAtlas(this._loadUrl,Laya.Handler.create(this, this.onLoaded));
     }
     private startLoad():void {
-        Laya.loader.load(this._url, Laya.Handler.create(this, this.onLoaded));
+        Laya.loader.load(this._loadUrl, Laya.Handler.create(this, this.onLoaded));
     }
 
     private onLoaded():void
     {
         this._isLoaded = true;
-        var _e:any= Laya.loader.getRes(this._url);
+        var _e:any= Laya.loader.getRes(this._loadUrl);
         this._prefix = _e.meta.prefix;
         var frames: Object = _e.frames;
         //生成动作列表
@@ -42,19 +42,19 @@ export default class GameAnimation extends BaseAnimation{
         return this._actionNameList.indexOf(actionName)>-1;
     }
 
-    public playAction(actionName:string ,start:number = 0,loop:Boolean = true,name:string= GameAnimation.MODUL):void {
+    public playAction(actionName:string ,start:number = 0,loop:boolean = true,name:string= GameAnimation.MODUL):void {
         if (!this._isLoaded || this._actionNameList.indexOf(actionName)==-1) return;
         if(this._currentActionName == actionName) return;
         this._currentActionName = actionName;
-        // Animation.createFrames(this.aniUrls(actionName,this._actionFrame[actionName]),GameAnimation.MODUL);
-        this.play();
-        // if(!this.graphics._one){
-        //     debugger;
-        // }
-        // this.pivot(this.graphics._one.width/2,0);
-        // var moveBoundsRect:Laya.Rectangle = this.getGraphicBounds();
-        // moveBoundsArr[1] = Laya.stage.height - moveBoundsRect.height;
-        // moveBoundsArr[3] = Laya.stage.width - moveBoundsRect.width/2;
+        Laya.Animation.createFrames(this.aniUrls(actionName,this._actionFrame[actionName]),GameAnimation.MODUL);
+        this.play(start, loop, actionName);
+        if(!this.graphics._one){
+            debugger;
+        }
+        this.pivot(this.graphics._one.width/2,0);
+        var moveBoundsRect:Laya.Rectangle = this.getGraphicBounds();
+        this.moveBoundsArr[1] = Laya.stage.height - moveBoundsRect.height;
+        this.moveBoundsArr[3] = Laya.stage.width - moveBoundsRect.width/2;
         // debugger;
     }
 

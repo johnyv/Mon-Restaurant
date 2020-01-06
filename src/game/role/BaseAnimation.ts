@@ -1,4 +1,4 @@
-export default class BaseAnimation extends Animation {
+export default class BaseAnimation extends Laya.Animation {
     public _prefix: string;
     public constructor() {
         super();

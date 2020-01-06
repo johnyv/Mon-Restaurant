@@ -1,0 +1,7 @@
+{
+  "code": "import { __extends } from \"tslib\";\r\nimport BaseManager from \"./BaseManager\";\r\nvar HitManager = (function (_super) {\r\n    __extends(HitManager, _super);\r\n    function HitManager(channel) {\r\n        return _super.call(this, channel) || this;\r\n    }\r\n    HitManager.prototype.init = function () {\r\n    };\r\n    HitManager.prototype.update = function () {\r\n    };\r\n    return HitManager;\r\n}(BaseManager));\r\nexport default HitManager;\r\n",
+  "references": [
+    "D:/project/canting/canting/src/game/manager/BaseManager.ts",
+    "D:/project/canting/canting/src/game/controller/CommandChannel.ts"
+  ]
+}

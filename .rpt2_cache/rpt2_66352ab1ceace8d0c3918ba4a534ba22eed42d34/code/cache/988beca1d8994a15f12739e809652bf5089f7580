@@ -1,0 +1,7 @@
+{
+  "code": "import { __extends } from \"tslib\";\r\nimport Controller from \"./Controller\";\r\nvar BattleController = (function (_super) {\r\n    __extends(BattleController, _super);\r\n    function BattleController(channel) {\r\n        return _super.call(this, channel) || this;\r\n    }\r\n    return BattleController;\r\n}(Controller));\r\nexport default BattleController;\r\n",
+  "references": [
+    "D:/project/canting/canting/src/game/controller/Controller.ts",
+    "D:/project/canting/canting/src/game/controller/CommandChannel.ts"
+  ]
+}

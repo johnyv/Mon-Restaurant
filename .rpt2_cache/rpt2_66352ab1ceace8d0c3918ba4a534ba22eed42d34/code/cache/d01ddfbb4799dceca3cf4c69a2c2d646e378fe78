@@ -1,0 +1,7 @@
+{
+  "code": "import GameEvent from \"./GameEvent\";\r\nimport ConstName from \"./ConstName\";\r\nvar JsonConfig = (function () {\r\n    function JsonConfig() {\r\n    }\r\n    Object.defineProperty(JsonConfig, \"ins\", {\r\n        get: function () {\r\n            !JsonConfig._ins && (JsonConfig._ins = new JsonConfig());\r\n            return JsonConfig._ins;\r\n        },\r\n        enumerable: true,\r\n        configurable: true\r\n    });\r\n    JsonConfig.prototype.initJson = function () {\r\n        GameEvent.ins.event(ConstName.FIRST_LOAD_COMPLETE);\r\n    };\r\n    JsonConfig.prototype.createJsonById = function (jsonObjArray, clzVo) {\r\n        var obj = new Object();\r\n        for (var jsonObjStr in jsonObjArray) {\r\n            (new clzVo()).init(jsonObjArray[jsonObjStr], obj);\r\n        }\r\n        return obj;\r\n    };\r\n    return JsonConfig;\r\n}());\r\nexport default JsonConfig;\r\n",
+  "references": [
+    "D:/project/canting/canting/src/game/GameEvent.ts",
+    "D:/project/canting/canting/src/game/ConstName.ts"
+  ]
+}

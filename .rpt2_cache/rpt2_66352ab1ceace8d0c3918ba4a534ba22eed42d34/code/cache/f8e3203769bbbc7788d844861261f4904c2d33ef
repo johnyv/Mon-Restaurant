@@ -1,0 +1,4 @@
+{
+  "code": "import { __extends } from \"tslib\";\r\nvar Comp_scene_layer = (function (_super) {\r\n    __extends(Comp_scene_layer, _super);\r\n    function Comp_scene_layer() {\r\n        var _this = _super.call(this) || this;\r\n        _this.speed = 0;\r\n        return _this;\r\n    }\r\n    return Comp_scene_layer;\r\n}(Laya.Box));\r\nexport default Comp_scene_layer;\r\n",
+  "references": []
+}

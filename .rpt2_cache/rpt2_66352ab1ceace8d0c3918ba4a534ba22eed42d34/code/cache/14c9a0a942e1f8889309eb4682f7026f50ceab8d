@@ -1,0 +1,4 @@
+{
+  "code": "import { __extends } from \"tslib\";\r\nvar GameEvent = (function (_super) {\r\n    __extends(GameEvent, _super);\r\n    function GameEvent() {\r\n        return _super.call(this) || this;\r\n    }\r\n    Object.defineProperty(GameEvent, \"ins\", {\r\n        get: function () {\r\n            !GameEvent._ins && (GameEvent._ins = new GameEvent());\r\n            return GameEvent._ins;\r\n        },\r\n        enumerable: true,\r\n        configurable: true\r\n    });\r\n    return GameEvent;\r\n}(Laya.EventDispatcher));\r\nexport default GameEvent;\r\n",
+  "references": []
+}

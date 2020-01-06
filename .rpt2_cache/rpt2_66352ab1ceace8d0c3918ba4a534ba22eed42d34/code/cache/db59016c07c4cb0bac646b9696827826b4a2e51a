@@ -1,0 +1,7 @@
+{
+  "code": "var Controller = (function () {\r\n    function Controller(channel) {\r\n        this.commandList = new Object();\r\n        this.managerList = [];\r\n        this.channel = channel;\r\n    }\r\n    Controller.prototype.init = function () {\r\n        for (var baseManagerName in this.managerList) {\r\n            this.managerList[baseManagerName].init();\r\n        }\r\n    };\r\n    Controller.prototype.addCommand = function (commandName, caller, func) {\r\n        if (!this.commandList.hasOwnProperty(commandName)) {\r\n            this.commandList[commandName] = [caller, func];\r\n        }\r\n    };\r\n    Controller.prototype.executeCommand = function (commandName, params) {\r\n        return this.commandList[commandName] != null ? this.commandList[commandName][1].call(this.commandList[commandName][0], params) : null;\r\n    };\r\n    return Controller;\r\n}());\r\nexport default Controller;\r\n",
+  "references": [
+    "D:/project/canting/canting/src/game/manager/BaseManager.ts",
+    "D:/project/canting/canting/src/game/controller/CommandChannel.ts"
+  ]
+}

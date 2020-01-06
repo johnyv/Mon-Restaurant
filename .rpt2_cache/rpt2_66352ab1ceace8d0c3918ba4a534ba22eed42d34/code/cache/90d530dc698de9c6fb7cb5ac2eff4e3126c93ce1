@@ -1,0 +1,9 @@
+{
+  "code": "import { __extends } from \"tslib\";\r\nimport Controller from \"./Controller\";\r\nimport RoleManager from \"../manager/RoleManager\";\r\nimport ConstName from \"../ConstName\";\r\nvar RoleController = (function (_super) {\r\n    __extends(RoleController, _super);\r\n    function RoleController(channel) {\r\n        var _this = _super.call(this, channel) || this;\r\n        _this._roleManager = new RoleManager(_this.channel);\r\n        _this.managerList.push(_this._roleManager);\r\n        _this.addCommand(ConstName.ROLE_GET_ROLE_BY_ID, _this._roleManager, _this._roleManager.getHero);\r\n        _this.addCommand(ConstName.ROLE_ADD_HERO, _this._roleManager, _this._roleManager.addHero);\r\n        _this.addCommand(ConstName.ROLE_ADD_ENEMY, _this._roleManager, _this._roleManager.addEnemy);\r\n        _this.addCommand(ConstName.ROLE_SCENE_SPEED, _this._roleManager, _this._roleManager.setSceneSpeed);\r\n        _this.addCommand(ConstName.ROLE_GET_HERO_LIST, _this._roleManager, _this._roleManager.getHeroList);\r\n        _this.addCommand(ConstName.ROLE_GET_ENEMY_LIST, _this._roleManager, _this._roleManager.getEnemyList);\r\n        return _this;\r\n    }\r\n    return RoleController;\r\n}(Controller));\r\nexport default RoleController;\r\n",
+  "references": [
+    "D:/project/canting/canting/src/game/controller/Controller.ts",
+    "D:/project/canting/canting/src/game/controller/CommandChannel.ts",
+    "D:/project/canting/canting/src/game/manager/RoleManager.ts",
+    "D:/project/canting/canting/src/game/ConstName.ts"
+  ]
+}

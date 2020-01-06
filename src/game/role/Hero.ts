@@ -1,5 +1,6 @@
 import Role from "./Role";
 import CommandChannel from "../controller/CommandChannel";
+import ConstName from "../ConstName";
 
 /**
  * ...
@@ -19,11 +20,11 @@ export default class Hero extends Role {
     }
 
     public addStage(pos): void {
-        // var channel:CommandChannel = CommandChannel.instance;
-        // this.gameAni.x = Math.ceil(pos.x);
-        // this.gameAni.y = Math.ceil(pos.y);
-        // var roleLayer:Sprite = channel.postCommand(ConstName.LAYER_CONTROLLER, ConstName.GET_ROLE_LAYER,[ConstName.ROLE_LAYER]) as Sprite;
-        // roleLayer.addChild(this.gameAni);
+        var channel:CommandChannel = CommandChannel.instance;
+        this.gameAni.x = Math.ceil(pos.x);
+        this.gameAni.y = Math.ceil(pos.y);
+        var roleLayer:Laya.Sprite = channel.postCommand(ConstName.LAYER_CONTROLLER, ConstName.GET_ROLE_LAYER,[ConstName.ROLE_LAYER]) as Laya.Sprite;
+        roleLayer.addChild(this.gameAni);
         // for each(var faBao:FaBao in this._faBaoArr){
         //     roleLayer.addChild(faBao);
         //     var faBaoX:number = pos.x + parsenumber(faBao.fbConfigVo.startPosX);

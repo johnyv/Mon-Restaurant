@@ -28,13 +28,13 @@ import GameGlobal from "../GameGlobal";
 		
 		private  roleId:number = 2;
 		private initGame():void {
-			this.channel.postCommand(ConstName.ROLE_CONTROLLER,ConstName.ROLE_ADD_HERO,["female",0,new Laya.Point(300,100)]);
+			this.channel.postCommand(ConstName.ROLE_CONTROLLER,ConstName.ROLE_ADD_HERO,["female",0,new Laya.Point(400,100)]);
 			//临时写段生成enmey的逻辑，之后处理
-			this.createEnemy();
-			Laya.timer.loop(600,this,this.createEnemy);
+			// this.createEnemy();
+			// Laya.timer.loop(600,this,this.createEnemy);
 			this.channel.postCommand(ConstName.LAYER_CONTROLLER,ConstName.CREATE_SCENE,['s_1']);
 		    this._inputManager.setInputStyle();
-			this._hitManager.init();
+			// this._hitManager.init();
 			Laya.SoundManager.playMusic(LoadManager.getUrl("bgm.mp3",GameGlobal.MUSIC));
 		}
 

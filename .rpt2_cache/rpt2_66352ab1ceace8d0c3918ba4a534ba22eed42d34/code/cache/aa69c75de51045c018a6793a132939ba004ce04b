@@ -1,0 +1,8 @@
+{
+  "code": "import { __extends } from \"tslib\";\r\nimport BaseManager from \"./BaseManager\";\r\nvar InputManager = (function (_super) {\r\n    __extends(InputManager, _super);\r\n    function InputManager(channel) {\r\n        return _super.call(this, channel) || this;\r\n    }\r\n    InputManager.prototype.setInputStyle = function () {\r\n    };\r\n    InputManager.prototype.heroControll = function (evt) {\r\n        if (evt.keyCode == Laya.Keyboard.D || evt.keyCode == Laya.Keyboard.A) {\r\n            if (evt.type == Laya.Event.KEY_DOWN) {\r\n                this._roleControll.isMove = true;\r\n                this._roleControll.rx = evt.keyCode == Laya.Keyboard.D ? 1 : -1;\r\n            }\r\n            else {\r\n                this._roleControll.isMove = false;\r\n                this._roleControll.rx = 0;\r\n            }\r\n        }\r\n        if (evt.keyCode == Laya.Keyboard.W || evt.keyCode == Laya.Keyboard.S) {\r\n            if (evt.type == Laya.Event.KEY_DOWN) {\r\n                this._roleControll.isMove = true;\r\n                this._roleControll.ry = evt.keyCode == Laya.Keyboard.S ? 1 : -1;\r\n            }\r\n            else {\r\n                this._roleControll.isMove = false;\r\n                this._roleControll.ry = 0;\r\n            }\r\n        }\r\n    };\r\n    return InputManager;\r\n}(BaseManager));\r\nexport default InputManager;\r\n",
+  "references": [
+    "D:/project/canting/canting/src/game/manager/BaseManager.ts",
+    "D:/project/canting/canting/src/game/role/ActionControll.ts",
+    "D:/project/canting/canting/src/game/controller/CommandChannel.ts"
+  ]
+}

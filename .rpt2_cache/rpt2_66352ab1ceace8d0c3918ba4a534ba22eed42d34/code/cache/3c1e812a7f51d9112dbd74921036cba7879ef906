@@ -1,0 +1,4 @@
+{
+  "code": "var GameGlobal = (function () {\r\n    function GameGlobal() {\r\n    }\r\n    GameGlobal.GAME_FRATE = 30;\r\n    GameGlobal.ROLE = 0;\r\n    GameGlobal.MUSIC = 1;\r\n    GameGlobal.SOUND = 2;\r\n    GameGlobal.BULLET = 3;\r\n    GameGlobal.UI = 4;\r\n    GameGlobal.SCENE = 5;\r\n    GameGlobal.FABAO = 6;\r\n    GameGlobal.RESOURCE_BASE_PATH = \"./resource/\";\r\n    GameGlobal.RESOURCE_ROLE_PATH = \"./resource/dynamics/role/\";\r\n    GameGlobal.RESOURCE_SOUND_PATH = \"./resource/dynamics/sound/\";\r\n    GameGlobal.RESOURCE_BULLET_PATH = \"./resource/dynamics/bullet/\";\r\n    GameGlobal.RESOURCE_UI_PATH = \"./resource/ui/\";\r\n    GameGlobal.RESOURCE_SCENE_PATH = \"./resource/scene/\";\r\n    GameGlobal.RESOURCE_FABAO_PATH = \"./resource/dynamics/faBao/\";\r\n    return GameGlobal;\r\n}());\r\nexport default GameGlobal;\r\n",
+  "references": []
+}

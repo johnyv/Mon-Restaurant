@@ -1,0 +1,13 @@
+{
+  "code": "import { __extends } from \"tslib\";\r\nimport BaseManager from \"./BaseManager\";\r\nimport InputManager from \"./InputManager\";\r\nimport HitManager from \"./HitManager\";\r\nimport GameEvent from \"../GameEvent\";\r\nimport ConstName from \"../ConstName\";\r\nimport LoadManager from \"./LoadManager\";\r\nimport GameGlobal from \"../GameGlobal\";\r\nvar GameManager = (function (_super) {\r\n    __extends(GameManager, _super);\r\n    function GameManager(channel) {\r\n        var _this = _super.call(this, channel) || this;\r\n        _this.roleId = 2;\r\n        _this.enemyNameArr = [\"m_1\", \"m_2\", \"m_3\", \"m_4\"];\r\n        _this._inputManager = new InputManager(channel);\r\n        _this._hitManager = new HitManager(channel);\r\n        return _this;\r\n    }\r\n    GameManager.prototype.init = function () {\r\n        GameEvent.ins.on(ConstName.FIRST_LOAD_COMPLETE, this, this.initGame);\r\n    };\r\n    GameManager.prototype.initGame = function () {\r\n        this.channel.postCommand(ConstName.ROLE_CONTROLLER, ConstName.ROLE_ADD_HERO, [\"female\", 0, new Laya.Point(300, 100)]);\r\n        this.channel.postCommand(ConstName.LAYER_CONTROLLER, ConstName.CREATE_SCENE, ['s_1']);\r\n        this._inputManager.setInputStyle();\r\n        Laya.SoundManager.playMusic(LoadManager.getUrl(\"bgm.mp3\", GameGlobal.MUSIC));\r\n    };\r\n    GameManager.prototype.createEnemy = function () {\r\n        var random = Math.random() * 100;\r\n        if (random > 20) {\r\n            this.roleId++;\r\n            var randomName = this.enemyNameArr[parseInt(Math.random() * this.enemyNameArr.length + \"\")];\r\n            this.channel.postCommand(ConstName.ROLE_CONTROLLER, ConstName.ROLE_ADD_ENEMY, [randomName, this.roleId, new Laya.Point(Laya.stage.width + Math.random() * (Laya.stage.width / 2 - 150), Math.random() * (Laya.stage.height - 150))]);\r\n        }\r\n    };\r\n    GameManager.prototype.testCommandChannel = function () {\r\n        alert(\"命令管线调试成功，可以开工了\");\r\n    };\r\n    return GameManager;\r\n}(BaseManager));\r\nexport default GameManager;\r\n",
+  "references": [
+    "D:/project/canting/canting/src/game/manager/BaseManager.ts",
+    "D:/project/canting/canting/src/game/controller/CommandChannel.ts",
+    "D:/project/canting/canting/src/game/manager/InputManager.ts",
+    "D:/project/canting/canting/src/game/manager/HitManager.ts",
+    "D:/project/canting/canting/src/game/GameEvent.ts",
+    "D:/project/canting/canting/src/game/ConstName.ts",
+    "D:/project/canting/canting/src/game/manager/LoadManager.ts",
+    "D:/project/canting/canting/src/game/GameGlobal.ts"
+  ]
+}

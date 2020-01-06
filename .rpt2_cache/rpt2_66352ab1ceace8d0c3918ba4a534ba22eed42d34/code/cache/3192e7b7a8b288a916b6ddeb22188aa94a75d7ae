@@ -1,0 +1,9 @@
+{
+  "code": "import { __extends } from \"tslib\";\r\nimport Controller from \"./Controller\";\r\nimport UIManager from \"../manager/UIManager\";\r\nimport ConstName from \"../ConstName\";\r\nvar UIController = (function (_super) {\r\n    __extends(UIController, _super);\r\n    function UIController(channel) {\r\n        var _this = _super.call(this, channel) || this;\r\n        _this._uiManager = new UIManager(channel);\r\n        _this.managerList.push(_this._uiManager);\r\n        _this.addCommand(ConstName.SHOW_VIEW_BY_NAME, _this._uiManager, _this._uiManager.showView);\r\n        return _this;\r\n    }\r\n    return UIController;\r\n}(Controller));\r\nexport default UIController;\r\n",
+  "references": [
+    "D:/project/canting/canting/src/game/controller/Controller.ts",
+    "D:/project/canting/canting/src/game/controller/CommandChannel.ts",
+    "D:/project/canting/canting/src/game/manager/UIManager.ts",
+    "D:/project/canting/canting/src/game/ConstName.ts"
+  ]
+}

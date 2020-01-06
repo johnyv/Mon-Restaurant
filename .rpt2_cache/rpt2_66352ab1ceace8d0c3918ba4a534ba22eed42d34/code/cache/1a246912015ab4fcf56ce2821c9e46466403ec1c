@@ -1,0 +1,9 @@
+{
+  "code": "import { __extends } from \"tslib\";\r\nimport BaseManager from \"./BaseManager\";\r\nimport GameEvent from \"../GameEvent\";\r\nimport ConstName from \"../ConstName\";\r\nvar UIManager = (function (_super) {\r\n    __extends(UIManager, _super);\r\n    function UIManager(channel) {\r\n        var _this = _super.call(this, channel) || this;\r\n        _this._viewControlHash = new Object();\r\n        GameEvent.ins.on(ConstName.SHOW_VIEW, _this, _this.showView);\r\n        return _this;\r\n    }\r\n    UIManager.prototype.addControl = function (viewId, baseControl) {\r\n        if (!this._viewControlHash[viewId])\r\n            this._viewControlHash[viewId] = baseControl;\r\n        else\r\n            throw new Error(\"重复添加控制器\" + viewId);\r\n    };\r\n    UIManager.prototype.showView = function (params) {\r\n        var viewId = params[0];\r\n        var control = this._viewControlHash[viewId];\r\n        if (control) {\r\n            var uiLayer = this.channel.postCommand(ConstName.LAYER_CONTROLLER, ConstName.GET_UI_LAYER, [ConstName.MAIN_UI_LAYER]);\r\n            control.showView(uiLayer);\r\n        }\r\n    };\r\n    UIManager.prototype.destroy = function () {\r\n        for (var controlName in this._viewControlHash) {\r\n            delete this._viewControlHash[controlName];\r\n        }\r\n        this._viewControlHash = null;\r\n    };\r\n    return UIManager;\r\n}(BaseManager));\r\nexport default UIManager;\r\n",
+  "references": [
+    "D:/project/canting/canting/src/game/manager/BaseManager.ts",
+    "D:/project/canting/canting/src/game/GameEvent.ts",
+    "D:/project/canting/canting/src/game/ConstName.ts",
+    "D:/project/canting/canting/src/game/gameModule/BaseControl.ts"
+  ]
+}

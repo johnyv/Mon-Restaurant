@@ -28,7 +28,7 @@ export default class JsonConfig{
         // JsonConfig.roleSettingJson = this.createJsonById(configJson["roleSetting"],RoleSettingVo);
         // JsonConfig.bulletConfigJson = this.createJsonById(configJson["bulletConfig"],BulletConfigVo);
         // JsonConfig.fbConfigVoJson = this.createJsonById(configJson["fbConfig"],FbConfigVo);
-        // GameEvent.ins.event(ConstName.FIRST_LOAD_COMPLETE);
+        GameEvent.ins.event(ConstName.FIRST_LOAD_COMPLETE);
     }
 
     private  createJsonById(jsonObjArray:any,clzVo:any):Object {

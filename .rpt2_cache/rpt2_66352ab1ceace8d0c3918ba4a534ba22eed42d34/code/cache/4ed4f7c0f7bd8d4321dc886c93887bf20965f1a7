@@ -1,0 +1,9 @@
+{
+  "code": "import { __extends } from \"tslib\";\r\nimport Controller from \"./Controller\";\r\nimport GameManager from \"../manager/GameManager\";\r\nimport ConstName from \"../ConstName\";\r\nvar GameController = (function (_super) {\r\n    __extends(GameController, _super);\r\n    function GameController(channel) {\r\n        var _this = _super.call(this, channel) || this;\r\n        _this._gameManager = new GameManager(_this.channel);\r\n        _this.managerList.push(_this._gameManager);\r\n        _this.addCommand(ConstName.TEST_COMMANDCHANNEL, _this._gameManager, _this._gameManager.testCommandChannel);\r\n        return _this;\r\n    }\r\n    return GameController;\r\n}(Controller));\r\nexport default GameController;\r\n",
+  "references": [
+    "D:/project/canting/canting/src/game/controller/Controller.ts",
+    "D:/project/canting/canting/src/game/controller/CommandChannel.ts",
+    "D:/project/canting/canting/src/game/manager/GameManager.ts",
+    "D:/project/canting/canting/src/game/ConstName.ts"
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "code": "import { __extends } from \"tslib\";\r\nimport BaseManager from \"./BaseManager\";\r\nvar RoleLayerManager = (function (_super) {\r\n    __extends(RoleLayerManager, _super);\r\n    function RoleLayerManager(channel) {\r\n        var _this = _super.call(this, channel) || this;\r\n        _this.roleLayer = new Laya.Sprite();\r\n        _this.bulletLayer = new Laya.Sprite();\r\n        _this.effectLayer = new Laya.Sprite();\r\n        return _this;\r\n    }\r\n    RoleLayerManager.prototype.setRoleLayerIndex = function (index) {\r\n        Laya.stage.addChild(this.roleLayer);\r\n        this.roleLayer.zOrder = index;\r\n    };\r\n    RoleLayerManager.prototype.setBulletLayerIndex = function (index) {\r\n        Laya.stage.addChild(this.bulletLayer);\r\n        this.bulletLayer.zOrder = index;\r\n    };\r\n    RoleLayerManager.prototype.setEffectLayerIndex = function (index) {\r\n        Laya.stage.addChild(this.effectLayer);\r\n        this.effectLayer.zOrder = index;\r\n    };\r\n    return RoleLayerManager;\r\n}(BaseManager));\r\nexport default RoleLayerManager;\r\n",
+  "references": [
+    "D:/project/canting/canting/src/game/manager/BaseManager.ts",
+    "D:/project/canting/canting/src/game/controller/CommandChannel.ts"
+  ]
+}

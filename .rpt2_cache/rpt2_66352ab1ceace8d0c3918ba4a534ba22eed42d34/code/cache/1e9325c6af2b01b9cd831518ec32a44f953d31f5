@@ -1,0 +1,9 @@
+{
+  "code": "import { __extends } from \"tslib\";\r\nimport Controller from \"./Controller\";\r\nimport ConstName from \"../ConstName\";\r\nimport LayerManager from \"../manager/LayerManager\";\r\nvar LayerController = (function (_super) {\r\n    __extends(LayerController, _super);\r\n    function LayerController(channel) {\r\n        var _this = _super.call(this, channel) || this;\r\n        _this._layerManager = new LayerManager(channel);\r\n        _this.managerList.push(_this._layerManager);\r\n        _this.addCommand(ConstName.CREATE_SCENE, _this._layerManager, _this._layerManager.createScene);\r\n        _this.addCommand(ConstName.GET_ROLE_LAYER, _this._layerManager, _this._layerManager.getRoleLayer);\r\n        _this.addCommand(ConstName.GET_UI_LAYER, _this._layerManager, _this._layerManager.getUILayer);\r\n        return _this;\r\n    }\r\n    return LayerController;\r\n}(Controller));\r\nexport default LayerController;\r\n",
+  "references": [
+    "D:/project/canting/canting/src/game/controller/Controller.ts",
+    "D:/project/canting/canting/src/game/controller/CommandChannel.ts",
+    "D:/project/canting/canting/src/game/ConstName.ts",
+    "D:/project/canting/canting/src/game/manager/LayerManager.ts"
+  ]
+}

@@ -2,6 +2,7 @@ import BaseManager from "./BaseManager";
 import CommandChannel from "../controller/CommandChannel";
 import Hero from "../role/Hero";
 import Enemy from "../role/Enemy";
+import ConstName from "../ConstName";
 
 export default class RoleManager extends BaseManager
 {
@@ -25,20 +26,22 @@ export default class RoleManager extends BaseManager
 	 * */
 	public getHero(params:any):any
 	{
-		// var roleName:string = params[0];
-		// var roleId:number = params[1];
-		// for each (var hero:Hero in _heroList)
-		// {
-		// 	if (hero.roleId == roleId)
-		// 		return hero;
-		// }
-		// hero = new Hero(roleName,roleId);
+		var roleName:string = params[0];
+		var roleId:number = params[1];
+		let hero:Hero;
+		for(let heroID in this._heroList)
+		{
+			hero = this._heroList[heroID];
+			if (hero.roleId == roleId)
+				return hero;
+		}
+		hero = new Hero(roleName,roleId);
 		// hero.bulletGroup = this.channel.postCommand(ConstName.BATTLE_CONTROLLER,ConstName.BATTLE_CREATE_BULLET_GROUP,[roleId]) as BaseBulletGroup;
 		// hero.setBulletSkin();
-		// //hero.setSkin("./dynamics/female.atlas");
-		// //hero.setAnimation("move");
-		// _heroList.push(hero);
-		// return hero;
+		hero.setSkin("female.atlas");
+		hero.setAnimation("move");
+		this._heroList.push(hero);
+		return hero;
 	}
 	
 	public getHeroList():Array<Hero> {
@@ -47,16 +50,16 @@ export default class RoleManager extends BaseManager
 
 	public addHero(params:any):void
 	{
-		// var roleName:string = params[0];
-		// var roleId:number = params[1];
-		// var pos:Point = params[2];
-		// var hero:Hero = this.getHero([roleName,roleId]);
-		// if (hero)
-		// {
-		// 	hero.setSkin(roleName+".atlas");
-		// 	hero.setAnimation("move");
-		// 	hero.addStage(pos);
-		// }
+		var roleName:string = params[0];
+		var roleId:number = params[1];
+		var pos:Laya.Point = params[2];
+		var hero:Hero = this.getHero([roleName,roleId]);
+		if (hero)
+		{
+			hero.setSkin(roleName+".atlas");
+			hero.setAnimation("move");
+			hero.addStage(pos);
+		}
 	}
 	
 

@@ -1,0 +1,7 @@
+{
+  "code": "import { __extends } from \"tslib\";\r\nimport Role from \"./Role\";\r\nvar Hero = (function (_super) {\r\n    __extends(Hero, _super);\r\n    function Hero(roleName, roleId) {\r\n        var _this = _super.call(this, roleName, roleId) || this;\r\n        _this._faBaoArr = [];\r\n        _this._posArr = [];\r\n        return _this;\r\n    }\r\n    Hero.prototype.addStage = function (pos) {\r\n    };\r\n    Hero.prototype.update = function () {\r\n    };\r\n    Object.defineProperty(Hero.prototype, \"isMove\", {\r\n        set: function (value) {\r\n        },\r\n        enumerable: true,\r\n        configurable: true\r\n    });\r\n    return Hero;\r\n}(Role));\r\nexport default Hero;\r\n",
+  "references": [
+    "D:/project/canting/canting/src/game/role/Role.ts",
+    "D:/project/canting/canting/src/game/controller/CommandChannel.ts"
+  ]
+}
