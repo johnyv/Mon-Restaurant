@@ -11,6 +11,11 @@ class Main {
 		Laya["DebugPanel"] && Laya["DebugPanel"].enable();
 		Laya.stage.scaleMode = GameConfig.scaleMode;
 		Laya.stage.screenMode = GameConfig.screenMode;
+		Laya.stage.bgColor = "0x44444";
+		Laya.stage.alignH = "center";//设置水平居中对齐
+		//设置垂直居中对齐，Stage.ALIGN_MIDDLE 常量等价于 middle 字符串
+		Laya.stage.alignV = Laya.Stage.ALIGN_MIDDLE;
+
 		//兼容微信不支持加载scene后缀场景
 		Laya.URL.exportSceneToJson = GameConfig.exportSceneToJson;
 
