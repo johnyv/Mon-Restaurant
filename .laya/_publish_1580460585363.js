@@ -1,4 +1,4 @@
-// v1.6.5
+// v1.6.0
 //是否使用IDE自带的node环境和插件，设置false后，则使用自己环境(使用命令行方式执行)
 const useIDENode = process.argv[0].indexOf("LayaAir") > -1 ? true : false;
 const useCMDNode = process.argv[1].indexOf("layaair2-cmd") > -1 ? true : false;
@@ -29,7 +29,7 @@ global.workSpaceDir = workSpaceDir;
 
 // 结合compile.js使用
 global.publish = true;
-const fileList = ["compile.js", "publish_xmgame.js", "publish_oppogame.js", "publish_vivogame.js", "publish_alipaygame.js", "publish_wxgame.js", "publish_bdgame.js", "publish_qqgame.js"];
+const fileList = ["compile.js", "publish_xmgame.js", "publish_oppogame.js", "publish_vivogame.js", "publish_wxgame.js", "publish_bdgame.js", "publish_qqgame.js"];
 requireDir('./', {
 	filter: function (fullPath) {
 		// 只用到了compile.js和publish.js
@@ -122,10 +122,7 @@ gulp.task("loadConfig", function () {
 // 清理release文件夹
 gulp.task("clearReleaseDir", ["compile"], function (cb) {
 	if (config.clearReleaseDir) {
-		let delList = [`${releaseDir}/**`, releaseDir + "_pack"];
-		if (config.packfileTargetValue) {
-			delList.push(config.packfileTargetValue);
-		}
+		let delList = [`${releaseDir}/**`, releaseDir + "_pack", config.packfileTargetValue];
 		// 小米快游戏，使用即存的项目，删掉Laya工程文件，保留小米环境项目文件
 		if (platform === "xmgame") {
 			let xmProjSrc = path.join(releaseDir, config.xmInfo.projName);
@@ -327,8 +324,7 @@ gulp.task("version2", ["version1"], function () {
 		let indexJSPath;
 		let versionCon = fs.readFileSync(versionPath, "utf8");
 		versionCon = JSON.parse(versionCon);
-		let indexJsStr = (versionCon && versionCon["index.js"]) ? versionCon["index.js"] :  "index.js";
-		indexJSPath = releaseDir + "/" + indexJsStr;
+		indexJSPath = releaseDir + "/" + versionCon["index.js"];
 		// 替换config.packfileFullValue中的路径
 		let packfileStr = JSON.stringify(config.packfileFullValue).replace(/\\\\/g, "/");
 		let tempPackfile = `${workSpaceDir}/.laya/configTemp.json`;
