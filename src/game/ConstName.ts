@@ -34,17 +34,21 @@ export default class ConstName
 	public static  SHOW_VIEW_BY_NAME:number = 4002;
 	
 	/**UI界面枚举*/
-	public static  MOVE_VIEW:number = 5001;
+	public static  MAIN_VIEW:string = "MAIN_VIEW"; //主界面
+	public static  MENU_VIEW:string = "MENU_VIEW"; //菜单界面
 	
 	/**游戏层级控制中心*/
 	public static  LAYER_CONTROLLER:number = 6001;
 	/**创建场景*/
 	public static  CREATE_SCENE:number = 6002;
-	/**获取角色层*/
-	public static  GET_ROLE_LAYER:number = 6003;
-	/**获取ui层*/
-	public static  GET_UI_LAYER:number = 6004;
-
+	/**获取场景层 */
+	public static GET_SCENE_LAYER:number = 6003;
+	/**获取ui层 */
+	public static GET_UI_LAYER:number = 6004;
+	/**根据名字获取ui层子层级 */
+	public static GET_UI_LAYER_BY_NAME:number = 6005;
+	/**根据名字获取场景层子层级 */
+	public static GET_SCENE_LAYER_BY_NAME:number = 6006;
 
 	/**战斗控制中心 */
 	public static  BATTLE_CONTROLLER:number = 7001;
@@ -55,6 +59,10 @@ export default class ConstName
 	public static  ATTACK:string = "attack";
 	public static  MOVE:string = "move";
 	
+	/**游戏层级名称，用来获取对应层级时的id */
+	public static WORLD_LAYER:string = "WORLD_LAYER"; //世界总容器，除ui层
+	public static UI_LAYER:string = "UI_LAYER"; //ui总容器
+
 	/**UI层级索引 */
 	public static  MAIN_UI_LAYER:string = "MAIN_UI_LAYER";
 	public static  ALERT_UI_LAYER:string = "ALERT_UI_LAYER";

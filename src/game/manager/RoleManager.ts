@@ -6,7 +6,7 @@ import ConstName from "../ConstName";
 
 export default class RoleManager extends BaseManager
 {
-	private  _heroList:Array<Hero> = new Array<Hero>();
+	private  _heroList:Array<Hero> = new Array<Hero>();s
 	private  _enemyList:Array<Enemy> = new Array<Enemy>();
 	private  _roleControllHash:Object = new Object();
 	//敌人缓冲池，避免重复创建
@@ -69,47 +69,44 @@ export default class RoleManager extends BaseManager
 	 * */
 	public getEnemy(params:any):any
 	{
-		// var roleName:string = params[0];
-		// var roleId:number = params[1];
-		// for each (var enemy:Enemy in _roleCacheList)
-		// {
-		// 	if (enemy.roleName == roleName)
-		// 	{
-		// 		console.log("从回收池中创建敌人");
-		// 		var index:Number = _roleCacheList.indexOf(enemy);
-		// 		_roleCacheList.splice(index,1);
-		// 		return enemy;
-		// 	}
-		// }
-		// enemy = new Enemy(roleName,roleId);
-		// enemy.setSkin("monster/"+roleName+".atlas");
+		var roleName:string = params[0];
+		var roleId:number = params[1];
+		let enemy:Enemy;
+		for(let i=0,len = this._roleCacheList.length ;i<len;i--){
+			enemy = this._roleCacheList[i];
+			console.log("从回收池中创建敌人");
+			this._roleCacheList.splice(i,1);
+			return enemy;
+		}
+		enemy = new Enemy(roleName,roleId);
+		enemy.setSkin("monster/"+roleName+".atlas");
 		// if(enemy.hasBullet){
 		// 	enemy.bulletGroup = this.channel.postCommand(ConstName.BATTLE_CONTROLLER,ConstName.BATTLE_CREATE_BULLET_GROUP,[roleId]) as BaseBulletGroup;
 		// 	enemy.setBulletSkin();
 		// }
-		// return enemy;
+		return enemy;
 	}
 
 	public addEnemy(params:any):void
 	{
-		// if(_enemyList.length>8)
-		// 	return;
-		// var roleName:string = params[0];
-		// var roleId:number = params[1];
-		// var pos:Point = params[2];
-		// var enemy:Enemy = this.getEnemy([roleName,roleId]);
-		// if (enemy)
-		// {
-		// 	enemy.init();
-		// 	enemy.setAnimation("move");
-		// 	enemy.gameAni.x = Math.ceil(pos.x);
-		// 	enemy.gameAni.y = Math.ceil(pos.y);
-		// 	var roleLayer:Sprite = this.channel.postCommand(ConstName.LAYER_CONTROLLER, ConstName.GET_ROLE_LAYER,[ConstName.ROLE_LAYER]) as Sprite;
-		// 	roleLayer.addChild(enemy.gameAni);
-		// 	var effectLayer:Sprite = this.channel.postCommand(ConstName.LAYER_CONTROLLER, ConstName.GET_ROLE_LAYER,[ConstName.EFFECT_LAYER]) as Sprite;
-		// 	effectLayer.addChild(enemy.bulletGroup);
-		// 	_enemyList.push(enemy);
-		// }
+		if(this._enemyList.length>8)
+			return;
+		var roleName:string = params[0];
+		var roleId:number = params[1];
+		var pos:Laya.Point = params[2];
+		var enemy:Enemy = this.getEnemy([roleName,roleId]);
+		if (enemy)
+		{
+			enemy.init();
+			enemy.setAnimation("move");
+			enemy.gameAni.x = Math.ceil(pos.x);
+			enemy.gameAni.y = Math.ceil(pos.y);
+			var roleLayer:Laya.Sprite = this.channel.postCommand(ConstName.LAYER_CONTROLLER, ConstName.GET_SCENE_LAYER_BY_NAME,[ConstName.ROLE_LAYER]) as Laya.Sprite;
+			roleLayer.addChild(enemy.gameAni);
+			var effectLayer:Laya.Sprite = this.channel.postCommand(ConstName.LAYER_CONTROLLER, ConstName.GET_SCENE_LAYER_BY_NAME,[ConstName.EFFECT_LAYER]) as Laya.Sprite;
+			effectLayer.addChild(enemy.bulletGroup);
+			this._enemyList.push(enemy);
+		}
 	}
 
 	public getEnemyList():Array<Enemy> {

@@ -1,5 +1,6 @@
 import GameEvent from "./GameEvent";
 import ConstName from "./ConstName";
+import ViewConfigVo from "./vo/ViewConfigVo";
 
 export default class JsonConfig{
     private static  _ins:JsonConfig;
@@ -11,7 +12,8 @@ export default class JsonConfig{
     public static  bulletConfigJson:Object;
     /**法宝相关属性配置 */
     public static  fbConfigVoJson:Object;
-
+    /**界面信息相关配置 */
+    public static  viewConfigVoJson:Object;
     public constructor(){
 
     }
@@ -23,11 +25,12 @@ export default class JsonConfig{
 
     public  initJson():void {
         // GameEvent.ins.event(ConstName.FIRST_LOAD_COMPLETE);
-        // var configJson: Object = window["newFightJson"];
+        var configJson: Object = window["configJson"];
         // JsonConfig.bulletPosJson = this.createJsonById(configJson["bulletPos"],BulletPosVo);
         // JsonConfig.roleSettingJson = this.createJsonById(configJson["roleSetting"],RoleSettingVo);
         // JsonConfig.bulletConfigJson = this.createJsonById(configJson["bulletConfig"],BulletConfigVo);
         // JsonConfig.fbConfigVoJson = this.createJsonById(configJson["fbConfig"],FbConfigVo);
+        JsonConfig.viewConfigVoJson = this.createJsonById(configJson["viewConfig"],ViewConfigVo);
         GameEvent.ins.event(ConstName.FIRST_LOAD_COMPLETE);
     }
 

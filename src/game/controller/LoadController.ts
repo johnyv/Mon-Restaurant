@@ -15,21 +15,23 @@ import JsonConfig from "../JsonConfig";
 
         /**初始加载的资源都放在这里 */
         private startLoad():void {
-            if(Laya.Browser.onWeiXin) {
-                this._firstLoadList.push({ url: LoadManager.getUrl("./newFightJson.json"), type: Laya.Loader.JSON });
-                Laya.loader.load(this._firstLoadList,new Laya.Handler(this,this.loadComplete));   
-            } else {
-                var script:any = Laya.Browser.document.createElement("script");
-                script.src = LoadManager.getUrl("./newFightJson.js");
-                script.onload = function():void {
-                    JsonConfig.ins.initJson();
-                }
-                script.onerror = function():void
-                {
-                    alert("配置文件加载错误，请刷新重试");
-                }
-                Laya.Browser.document.body.appendChild(script);
-            }
+            this._firstLoadList.push({ url: LoadManager.getUrl("configJson.json"), type: Laya.Loader.JSON });
+            Laya.loader.load(this._firstLoadList,new Laya.Handler(this,this.loadComplete));  
+            // if(Laya.Browser.onWeiXin) {
+            //     this._firstLoadList.push({ url: LoadManager.getUrl("./configJson.json"), type: Laya.Loader.JSON });
+            //     Laya.loader.load(this._firstLoadList,new Laya.Handler(this,this.loadComplete));   
+            // } else {
+            //     var script:any = Laya.Browser.document.createElement("script");
+            //     script.src = LoadManager.getUrl("./newFightJson.js");
+            //     script.onload = function():void {
+            //         JsonConfig.ins.initJson();
+            //     }
+            //     script.onerror = function():void
+            //     {
+            //         alert("配置文件加载错误，请刷新重试");
+            //     }
+            //     Laya.Browser.document.body.appendChild(script);
+            // }
         }
 
         /**加入资源到加载列表 */
@@ -43,7 +45,7 @@ import JsonConfig from "../JsonConfig";
         }
         
         private loadComplete():void {
-            window["newFightJson"] = LoadManager.getRes("newFightJson.json");
+            window["configJson"] = LoadManager.getRes("configJson.json");
             JsonConfig.ins.initJson();
             // GameEvent.ins.event(ConstName.FIRST_LOAD_COMPLETE);
         }

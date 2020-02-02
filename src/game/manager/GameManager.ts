@@ -30,10 +30,13 @@ import GameGlobal from "../GameGlobal";
 		private initGame():void {
 			// this.channel.postCommand(ConstName.ROLE_CONTROLLER,ConstName.ROLE_ADD_HERO,["female",0,new Laya.Point(400,100)]);
 			//临时写段生成enmey的逻辑，之后处理
-			this.createEnemy();
+			for(let i = 0;i<10;i++){
+				this.createEnemy();
+			}
 			// Laya.timer.loop(600,this,this.createEnemy);
 			this.channel.postCommand(ConstName.LAYER_CONTROLLER,ConstName.CREATE_SCENE,['s_1']);
-		    this._inputManager.setInputStyle();
+			// this._inputManager.setInputStyle();
+			this.channel.postCommand(ConstName.UI_CONTROLLER,ConstName.SHOW_VIEW_BY_NAME,[ConstName.MAIN_VIEW]);
 			// this._hitManager.init();
 			// Laya.SoundManager.playMusic(LoadManager.getUrl("bgm.mp3",GameGlobal.MUSIC));
 		}
@@ -44,7 +47,7 @@ import GameGlobal from "../GameGlobal";
 			if(random> 20){
 				this.roleId++;
 				var randomName:string = this.enemyNameArr[parseInt(Math.random()*this.enemyNameArr.length + "")];
-				this.channel.postCommand(ConstName.ROLE_CONTROLLER,ConstName.ROLE_ADD_ENEMY,[randomName,this.roleId,new Laya.Point(Laya.stage.width+Math.random()*(Laya.stage.width/2-150),Math.random()*(Laya.stage.height-150))]);
+				this.channel.postCommand(ConstName.ROLE_CONTROLLER,ConstName.ROLE_ADD_ENEMY,[randomName,this.roleId,new Laya.Point(-560 + Math.random()*2240,Math.random()*(Laya.stage.height-100))]);
 			}
 		}
 

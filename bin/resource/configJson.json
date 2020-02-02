@@ -1,18 +1,4 @@
 {
-    "bulletPos": [
-        [
-            "female",
-            105,
-            40,
-            1
-        ],
-        [
-            "male",
-            105,
-            40,
-            1
-        ]
-    ],
     "gameSetting": [
         [
             1,
@@ -37,6 +23,20 @@
         [
             "monster",
             8
+        ]
+    ],
+    "viewConfig":[
+        [
+            "MAIN_VIEW",
+            "MainUI.json",
+            false,
+            false
+        ],
+        [
+            "MENU_VIEW",
+            "MenuUI.json",
+            true,
+            true
         ]
     ]
 }
