@@ -101,9 +101,9 @@ export default class RoleManager extends BaseManager
 			enemy.setAnimation("move");
 			enemy.gameAni.x = Math.ceil(pos.x);
 			enemy.gameAni.y = Math.ceil(pos.y);
-			var roleLayer:Laya.Sprite = this.channel.postCommand(ConstName.LAYER_CONTROLLER, ConstName.GET_SCENE_LAYER_BY_NAME,[ConstName.ROLE_LAYER]) as Laya.Sprite;
+			var roleLayer:Laya.Sprite = this.channel.postCommand(ConstName.LAYER_CONTROLLER, ConstName.LAYER_GET_SCENE_LAYER_BY_NAME,ConstName.ROLE_LAYER) as Laya.Sprite;
 			roleLayer.addChild(enemy.gameAni);
-			var effectLayer:Laya.Sprite = this.channel.postCommand(ConstName.LAYER_CONTROLLER, ConstName.GET_SCENE_LAYER_BY_NAME,[ConstName.EFFECT_LAYER]) as Laya.Sprite;
+			var effectLayer:Laya.Sprite = this.channel.postCommand(ConstName.LAYER_CONTROLLER, ConstName.LAYER_GET_SCENE_LAYER_BY_NAME,ConstName.EFFECT_LAYER) as Laya.Sprite;
 			effectLayer.addChild(enemy.bulletGroup);
 			this._enemyList.push(enemy);
 		}

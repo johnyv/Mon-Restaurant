@@ -9,6 +9,10 @@ export default class ViewConfigVo extends BaseVo {
     public closeOther:boolean;
     //是否模式窗口
     public isModel:boolean;
+    /**关闭界面是否销毁 */
+    public closeAndDestroy:boolean;
+    //界面配置json文件
+    public jsonName:string;
 
     public constructor() {
         super();
@@ -20,6 +24,8 @@ export default class ViewConfigVo extends BaseVo {
         this.resourceUrl = obj[propNo++];
         this.closeOther = obj[propNo++];
         this.isModel = obj[propNo++];
+        this.closeAndDestroy = obj[propNo++];
+        this.jsonName = obj[propNo++];
         jsonObj[this.viewName] = this;
     }
 } 

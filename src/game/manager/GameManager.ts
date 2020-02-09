@@ -6,6 +6,7 @@ import GameEvent from "../GameEvent";
 import ConstName from "../ConstName";
 import LoadManager from "./LoadManager";
 import GameGlobal from "../GameGlobal";
+import InstallationItemVo from "../vo/InstallationItemVo";
 
 	/**
 	 * ...
@@ -34,9 +35,9 @@ import GameGlobal from "../GameGlobal";
 				this.createEnemy();
 			}
 			// Laya.timer.loop(600,this,this.createEnemy);
-			this.channel.postCommand(ConstName.LAYER_CONTROLLER,ConstName.CREATE_SCENE,['s_1']);
+			this.channel.postCommand(ConstName.LAYER_CONTROLLER,ConstName.LAYER_CREATE_SCENE,['s_1']);
 			// this._inputManager.setInputStyle();
-			this.channel.postCommand(ConstName.UI_CONTROLLER,ConstName.SHOW_VIEW_BY_NAME,[ConstName.MAIN_VIEW]);
+			this.channel.postCommand(ConstName.UI_CONTROLLER,ConstName.UI_SHOW_VIEW_BY_NAME,[ConstName.MAIN_VIEW]);
 			// this._hitManager.init();
 			// Laya.SoundManager.playMusic(LoadManager.getUrl("bgm.mp3",GameGlobal.MUSIC));
 		}
@@ -54,4 +55,17 @@ import GameGlobal from "../GameGlobal";
 		public testCommandChannel(){
 			alert("命令管线调试成功，可以开工了");
 		}
+
+		public addInstallation(data:InstallationItemVo):void{
+			let roleLayer:Laya.Sprite = this.channel.postCommand(ConstName.LAYER_CONTROLLER,ConstName.LAYER_GET_SCENE_LAYER_BY_NAME,ConstName.ROLE_LAYER);
+			let installationImage:Laya.Image = new Laya.Image();
+			installationImage.skin = LoadManager.getIconUrl(data.type,data.id);
+			installationImage.pos(data.posArr[0],data.posArr[1]);
+			installationImage.width = data.sizeArr[0];
+			installationImage.height = data.sizeArr[1];
+			roleLayer.addChild(installationImage);
+			this.channel.postCommand(ConstName.UI_CONTROLLER,ConstName.UI_REMOVE_VIEW_BY_NAME,ConstName.INSTALLATION_INFO);
+			this.channel.postCommand(ConstName.UI_CONTROLLER,ConstName.UI_REMOVE_VIEW_BY_NAME,ConstName.MENU_VIEW);
+		}
+
 	}

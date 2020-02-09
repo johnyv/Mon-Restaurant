@@ -1,12 +1,12 @@
 {
     "x":0,
     "type":"Scene",
-    "selectedBox":2,
-    "selecteID":13,
+    "selectedBox":14,
+    "selecteID":139,
     "searchKey":"Scene",
-    "props":{"x":0,"width":560,"sceneColor":"#b46867","runtime":"game/SceneSprite.ts","height":960},
+    "props":{"x":0,"width":960,"sceneColor":"#b46867","runtime":"game/SceneSprite.ts","height":1280},
     "nodeParent":-1,
-    "maxID":167,
+    "maxID":181,
     "label":"Scene",
     "isOpen":true,
     "isDirectory":true,
@@ -21,16 +21,17 @@
             "props":{"y":0,"x":0,"var":"rearLayer","speed":2,"name":"rearLayer"},
             "nodeParent":2,
             "label":"rearLayer",
-            "isOpen":false,
+            "isOpen":true,
             "isDirectory":true,
             "isAniNode":true,
             "hasChild":true,
             "compId":14,
             "child":[
                 {
+                    "x":30,
                     "type":"Sprite",
                     "searchKey":"Sprite",
-                    "props":{"y":217,"x":0,"width":560,"texture":"scene/1_1/door_bg_2.png","height":745},
+                    "props":{"y":-42,"x":-15,"width":975,"texture":"scene/1_1/door_bg_2.png","height":1365},
                     "nodeParent":14,
                     "label":"Sprite",
                     "isOpen":true,
@@ -43,9 +44,10 @@
                     "$HIDDEN":false
                 },
                 {
+                    "x":30,
                     "type":"Sprite",
                     "searchKey":"Sprite",
-                    "props":{"y":217,"x":560,"width":560,"texture":"scene/1_1/door_bg_2.png","height":745},
+                    "props":{"y":206,"x":958,"width":960,"texture":"scene/1_1/door_bg_2.png","height":1280},
                     "nodeParent":14,
                     "label":"Sprite",
                     "isOpen":true,
@@ -58,9 +60,10 @@
                     "$HIDDEN":false
                 },
                 {
+                    "x":30,
                     "type":"Sprite",
                     "searchKey":"Sprite",
-                    "props":{"y":988,"x":0,"width":560,"texture":"scene/1_1/door_bg_2.png","height":934},
+                    "props":{"y":1318,"x":0,"width":960,"texture":"scene/1_1/door_bg_2.png","height":1320},
                     "nodeParent":14,
                     "label":"Sprite",
                     "isOpen":true,
@@ -73,9 +76,10 @@
                     "$HIDDEN":false
                 },
                 {
+                    "x":30,
                     "type":"Sprite",
                     "searchKey":"Sprite",
-                    "props":{"y":0,"x":-560,"width":560,"texture":"scene/1_1/door_bg_2.png","height":968},
+                    "props":{"y":-42,"x":-960,"width":960,"texture":"scene/1_1/door_bg_2.png","height":1438},
                     "nodeParent":14,
                     "label":"Sprite",
                     "isOpen":true,
@@ -88,9 +92,10 @@
                     "$HIDDEN":false
                 },
                 {
+                    "x":30,
                     "type":"Sprite",
                     "searchKey":"Sprite",
-                    "props":{"y":0,"x":-1120,"width":560,"texture":"scene/1_1/floor.png","height":960},
+                    "props":{"y":0,"x":-1920,"width":960,"texture":"scene/1_1/floor.png","height":1280},
                     "nodeParent":14,
                     "label":"Sprite",
                     "isDirectory":false,
@@ -98,7 +103,8 @@
                     "hasChild":false,
                     "compId":164,
                     "child":[
-                        ]
+                        ],
+                    "$HIDDEN":false
                 }],
             "$HIDDEN":false
         },
@@ -106,19 +112,20 @@
             "x":15,
             "type":"Box",
             "searchKey":"Box,roleLayer,roleLayer",
-            "props":{"y":0,"x":0,"width":560,"var":"roleLayer","speed":4,"name":"roleLayer","height":970},
+            "props":{"y":0,"x":0,"width":960,"var":"roleLayer","speed":4,"name":"roleLayer","height":1311},
             "nodeParent":2,
             "label":"roleLayer",
-            "isOpen":false,
+            "isOpen":true,
             "isDirectory":true,
             "isAniNode":true,
             "hasChild":true,
             "compId":12,
             "child":[
                 {
+                    "x":30,
                     "type":"Sprite",
                     "searchKey":"Sprite",
-                    "props":{"y":121,"x":251,"texture":"scene/1_1/npc_1.png"},
+                    "props":{"y":245,"x":595,"texture":"scene/1_1/npc_1.png"},
                     "nodeParent":12,
                     "label":"Sprite",
                     "isDirectory":false,
@@ -126,7 +133,8 @@
                     "hasChild":false,
                     "compId":143,
                     "child":[
-                        ]
+                        ],
+                    "$HIDDEN":false
                 }],
             "$HIDDEN":false
         },
@@ -137,16 +145,17 @@
             "props":{"y":0,"x":0,"width":560,"var":"frontLayer","speed":6,"name":"frontLayer","height":570},
             "nodeParent":2,
             "label":"frontLayer",
-            "isOpen":false,
+            "isOpen":true,
             "isDirectory":true,
             "isAniNode":true,
             "hasChild":true,
             "compId":13,
             "child":[
                 {
+                    "x":30,
                     "type":"Sprite",
                     "searchKey":"Sprite",
-                    "props":{"y":0,"x":0,"width":560,"texture":"scene/1_1/door_bg_1.png","height":235},
+                    "props":{"y":0,"x":0,"width":960,"texture":"scene/1_1/door_bg_1.png","height":235},
                     "nodeParent":13,
                     "label":"Sprite",
                     "isDirectory":false,
@@ -158,9 +167,10 @@
                     "$HIDDEN":false
                 },
                 {
+                    "x":30,
                     "type":"Sprite",
                     "searchKey":"Sprite",
-                    "props":{"y":0,"x":560,"width":560,"texture":"scene/1_1/door_bg_3.png","height":235},
+                    "props":{"y":0,"x":960,"width":960,"texture":"scene/1_1/door_bg_3.png","height":235},
                     "nodeParent":13,
                     "label":"Sprite",
                     "isDirectory":false,
@@ -168,12 +178,14 @@
                     "hasChild":false,
                     "compId":152,
                     "child":[
-                        ]
+                        ],
+                    "$HIDDEN":false
                 },
                 {
+                    "x":30,
                     "type":"Sprite",
                     "searchKey":"Sprite",
-                    "props":{"y":960,"x":0,"width":560,"texture":"scene/1_1/door_bg_4.png","height":235},
+                    "props":{"y":1280,"x":0,"width":960,"texture":"scene/1_1/door_bg_4.png","height":235},
                     "nodeParent":13,
                     "label":"Sprite",
                     "isOpen":true,
@@ -182,8 +194,10 @@
                     "hasChild":false,
                     "compId":155,
                     "child":[
-                        ]
-                }]
+                        ],
+                    "$HIDDEN":false
+                }],
+            "$HIDDEN":false
         }],
     "animations":[
         {
@@ -193,5 +207,6 @@
             "id":1,
             "frameRate":24,
             "action":0
-        }]
+        }],
+    "$HIDDEN":false
 }

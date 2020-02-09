@@ -3,10 +3,12 @@ import GameEvent from "../GameEvent";
 import ConstName from "../ConstName";
 import BaseControl from "../gameModule/BaseControl";
 import MainView from "../views/MainView";
-import MenuView from "../views/MenuView";
+import MenuView from "../views/menu/MenuView";
 import BaseView from "../views/BaseView";
 import JsonConfig from "../JsonConfig";
 import ViewConfigVo from "../vo/ViewConfigVo";
+import LoadManager from "./LoadManager";
+import GameGlobal from "../GameGlobal";
 
 /**
  * ...
@@ -20,61 +22,77 @@ export default class UIManager extends BaseManager {
 	
 	public constructor(channel) {
 		super(channel);
-		this._viewClassHash = new Object();
 		this._viewInsHash = new Object();
 		GameEvent.ins.on(ConstName.SHOW_VIEW, this, this.showView);
 	}
 
 	//注册各种界面
 	public init(): void {
-		this._viewClassHash[ConstName.MAIN_VIEW] = MainView;
-		this._viewClassHash[ConstName.MENU_VIEW] = MenuView;
-		// Laya.View.regComponent()
-		// Laya.View.regViewRuntime("MainUI",MainView);
-		// Laya.View.regViewRuntime("MenuUI",MenuView);
-	}
-
-	/**加入控制器*/
-	public addControl(viewName: number, baseControl: BaseControl): void {
-		if (!this._viewInsHash[viewName])
-			this._viewInsHash[viewName] = baseControl;
-		else
-			throw new Error("重复添加控制器" + viewName);
 	}
 
 	//获取界面,如果没有界面实例则创建
-	public getView(viewName): BaseView {
-		let view = this._viewInsHash[viewName] || this.createView(viewName);
+	public getView(viewName:string,viewData:any): BaseView {
+		let view = this._viewInsHash[viewName] || this.createView(viewName,viewData);
 		return view;
 	}
 
 	/** 生成界面*/
-	public createView(viewName: string): void {
+	public createView(viewName: string,viewData:any): void {
 		let viewVo: ViewConfigVo = JsonConfig.viewConfigVoJson[viewName];
-		Laya.View.load("views/" + viewVo.resourceUrl,Laya.Handler.create(this, this.addView,[viewName]));
-		// Laya.Scene.open("views/" + viewVo.resourceUrl, true, Laya.Handler.create(this, this.addScene));
+		// Laya.View.load("views/" + viewVo.resourceUrl,Laya.Handler.create(this, this.loadViewJson,[viewName]));
+		Laya.Scene.open("views/" + viewVo.resourceUrl, true, Laya.Handler.create(this, this.loadViewJson,[viewName,viewData]));
 	}
 
-	/**对场景显示对象进行分层处理 */
+	/**解析界面配置文件，如果有的话 */
+	private loadViewJson(viewName:string,viewData:any,view: BaseView):void{
+		if (view) {
+			view.viewData = viewData;
+			let viewVo: ViewConfigVo = JsonConfig.viewConfigVoJson[viewName];
+			if(viewVo.jsonName)
+				Laya.loader.load(LoadManager.getUrl(viewVo.jsonName,GameGlobal.JSON),new Laya.Handler(this,this.addView,[viewName,view]));  
+			else
+				this.addView(viewName,view);
+		}
+	}
+
+	/**加载完成后初次显示界面 */
 	private addView(viewName:string,view: BaseView): void {
 		if (view) {
 			this._viewInsHash[viewName] = view;
-			let viewVo: ViewConfigVo = JsonConfig.viewConfigVoJson[viewName];
-			var uiLayer: Laya.Sprite = this.channel.postCommand(ConstName.LAYER_CONTROLLER, ConstName.GET_UI_LAYER_BY_NAME, [ConstName.MAIN_UI_LAYER]) as Laya.Sprite;
+			view.viewName = viewName;
+			let viewVo: ViewConfigVo = JsonConfig.viewConfigVoJson[viewName]; 
+			if(viewVo.jsonName)
+				JsonConfig.ins.setVo(viewName,LoadManager.getRes(viewVo.jsonName,GameGlobal.JSON));
+			var uiLayer: Laya.Sprite = this.channel.postCommand(ConstName.LAYER_CONTROLLER, ConstName.LAYER_GET_UI_LAYER_BY_NAME, ConstName.MAIN_UI_LAYER) as Laya.Sprite;
 			view.showSelf(viewVo.closeOther,viewVo.isModel,uiLayer);
+			view.init();
 		}
 	}
 
 	//显示界面
 	public showView(params: any): void {
-		var viewName: number = params[0];
+		var viewName: string = params[0];
+		let viewData:any = params[1];
 		//判断是否开启当前模块 ,预留
-		var view: BaseView = this.getView(viewName);
+		var view: BaseView = this.getView(viewName,viewData);
 		if (view) {
+			view.viewData = viewData;
 			let viewVo: ViewConfigVo = JsonConfig.viewConfigVoJson[viewName];
-			var uiLayer: Laya.Sprite = this.channel.postCommand(ConstName.LAYER_CONTROLLER, ConstName.GET_UI_LAYER_BY_NAME, [ConstName.MAIN_UI_LAYER]) as Laya.Sprite;
+			var uiLayer: Laya.Sprite = this.channel.postCommand(ConstName.LAYER_CONTROLLER, ConstName.LAYER_GET_UI_LAYER_BY_NAME, ConstName.MAIN_UI_LAYER) as Laya.Sprite;
 			view.showSelf(viewVo.closeOther,viewVo.isModel,uiLayer);
+			view.init();
 		}
+	}
+
+	public removeViewByName(viewName:string):void {
+		let view:BaseView = this._viewInsHash[viewName];
+		if(view){
+			view.removeSelf();
+		}
+	}
+
+	public destroyViewByName(viewName:string):void {
+		delete this._viewInsHash[viewName];
 	}
 
 	public destroy(): void {
