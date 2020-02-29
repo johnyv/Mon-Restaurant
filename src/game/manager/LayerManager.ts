@@ -54,7 +54,8 @@ export default class LayerManager extends BaseManager {
 		return this._sceneManager.sceneLayer;
 	}
 
-	public getSceneLayerByName(roleLayerType: string): Laya.Sprite {
+	public getSceneLayerByName(params: any): Laya.Sprite {
+		var roleLayerType: string = params[0];
 		switch (roleLayerType) {
 			case ConstName.ROLE_LAYER:
 				return this._sceneManager.roleLayer;
@@ -69,7 +70,8 @@ export default class LayerManager extends BaseManager {
 		return new Laya.Sprite();
 	}
 
-	public getUILayerByName(uiLayerType: string): Laya.Sprite {
+	public getUILayerByName(params: any): Laya.Sprite {
+		var uiLayerType: string = params[0];
 		switch (uiLayerType) {
 			case ConstName.MAIN_UI_LAYER:
 				return this._uiLayerManager.mainUILayer;

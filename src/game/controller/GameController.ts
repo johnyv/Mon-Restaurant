@@ -9,7 +9,6 @@ export default class GameController extends Controller{
         super(channel);
         this._gameManager = new GameManager(this.channel);
         this.managerList.push(this._gameManager);
-        this.addCommand(ConstName.GAME_TEST_COMMANDCHANNEL,this._gameManager,this._gameManager.testCommandChannel);
-        this.addCommand(ConstName.GAME_ADD_INSTALLATION,this._gameManager,this._gameManager.addInstallation);
+        this.addCommand(ConstName.TEST_COMMANDCHANNEL,this._gameManager,this._gameManager.testCommandChannel);
     }
 }

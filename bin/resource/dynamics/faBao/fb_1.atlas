@@ -1,0 +1,76 @@
+{
+    "frames": {
+        "fb_1_0.png": {
+            "frame": {
+                "h": 50,
+                "idx": 0,
+                "w": 50,
+                "x": 0,
+                "y": 0
+            },
+            "sourceSize": {
+                "h": 50,
+                "w": 50
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "fb_1_1.png": {
+            "frame": {
+                "h": 50,
+                "idx": 0,
+                "w": 50,
+                "x": 0,
+                "y": 51
+            },
+            "sourceSize": {
+                "h": 50,
+                "w": 50
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "fb_1_2.png": {
+            "frame": {
+                "h": 50,
+                "idx": 0,
+                "w": 50,
+                "x": 51,
+                "y": 0
+            },
+            "sourceSize": {
+                "h": 50,
+                "w": 50
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "fb_1_3.png": {
+            "frame": {
+                "h": 50,
+                "idx": 0,
+                "w": 50,
+                "x": 51,
+                "y": 51
+            },
+            "sourceSize": {
+                "h": 50,
+                "w": 50
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0
+            }
+        }
+    },
+    "meta": {
+        "image": "fb_1.png",
+        "prefix": "fb_1/"
+    }
+}

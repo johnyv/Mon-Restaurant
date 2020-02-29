@@ -9,8 +9,6 @@ export default class UIController extends Controller{
         super(channel);
         this._uiManager = new UIManager(channel);
         this.managerList.push(this._uiManager);
-        this.addCommand(ConstName.UI_SHOW_VIEW_BY_NAME,this._uiManager,this._uiManager.showView);
-        this.addCommand(ConstName.UI_REMOVE_VIEW_BY_NAME,this._uiManager,this._uiManager.removeViewByName);
-        this.addCommand(ConstName.UI_DESTROY_VIEW_BY_NAME,this._uiManager,this._uiManager.destroyViewByName);
+        this.addCommand(ConstName.SHOW_VIEW_BY_NAME,this._uiManager,this._uiManager.showView);
     }
 }

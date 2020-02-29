@@ -90,7 +90,6 @@ export default class SceneLayerManager extends BaseManager {
 			this.frontLayer.addChild(scene.frontLayer);
 			this.frontSpeed = this.sceneSprite.frontLayer.speed;
 		}
-		Laya.SoundManager.playMusic("resource/sound/bg_music.mp3");
 		// this.channel.postCommand(ConstName.ROLE_CONTROLLER,ConstName.ROLE_SCENE_SPEED,[-_middleSpeed]);
 		// Laya.timer.loop(30,this,this.update);
 	}
