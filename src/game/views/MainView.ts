@@ -27,7 +27,7 @@ export default class MainView extends BaseView {
     }
 
     private showMenuView(): void {
-        CommandChannel.instance.postCommand(ConstName.UI_CONTROLLER, ConstName.UI_SHOW_VIEW_BY_NAME, [ConstName.MENU_VIEW]);
+        CommandChannel.instance.postCommand(ConstName.UI_CONTROLLER, ConstName.SHOW_VIEW_BY_NAME, [ConstName.MENU_VIEW]);
     }
 
     public moveScene(toX: number, toY: number, evt: Laya.Event): void {
@@ -35,7 +35,7 @@ export default class MainView extends BaseView {
         this.right_btn.mouseEnabled = false;
         this.up_btn.mouseEnabled = false;
         this.down_btn.mouseEnabled = false;
-        let sceneLayer: Laya.Sprite = this._channel.postCommand(ConstName.LAYER_CONTROLLER, ConstName.LAYER_GET_SCENE_LAYER);
+        let sceneLayer: Laya.Sprite = this._channel.postCommand(ConstName.LAYER_CONTROLLER, ConstName.GET_SCENE_LAYER);
         let toDirX: number = sceneLayer.x;
         let toDirY: number = sceneLayer.y;
         /**具体场景数据需要表格配置，先写死 */
@@ -62,7 +62,7 @@ export default class MainView extends BaseView {
 
     //场景移动完毕后，根据场景id（其实就是坐标）来设置箭头的可见性
     public moveSceneComplete():void{
-        let sceneLayer: Laya.Sprite = this._channel.postCommand(ConstName.LAYER_CONTROLLER, ConstName.LAYER_GET_SCENE_LAYER);
+        let sceneLayer: Laya.Sprite = this._channel.postCommand(ConstName.LAYER_CONTROLLER, ConstName.GET_SCENE_LAYER);
         //左右箭头
         if(sceneLayer.y == 0){
             this.left_btn.visible = true;

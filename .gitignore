@@ -1,2 +1,4 @@
 .laya/chrome
 release/
+bin/js/bundle.js
+src/GameConfig.ts

@@ -1,6 +1,6 @@
 import ConstName from "../ConstName";
 
-import DataProxy from "../proxy/DataProxy";
+import DataProxy from "../model/DataProxy";
 import GameController from "./GameController";
 import UIController from "./UIController";
 import LoadController from "./LoadController";
@@ -8,7 +8,6 @@ import LayerController from "./LayerController";
 import RoleController from "./RoleController";
 import BattleController from "./BattleController";
 import Controller from "./Controller";
-import InstallationProxy from "../proxy/InstallationProxy";
 export default class CommandChannel{
     private  _controllerList:Object=new Object();
     private  _dataProxyList:Object=new Object();
@@ -22,7 +21,7 @@ export default class CommandChannel{
         this.registerController(ConstName.BATTLE_CONTROLLER,new BattleController(this));
         // this.registerController(ConstData.SOUND_CONTROLLER,new SoundController(this));
         // this.registerController(ConstData.APP_CONTROLLER,new AppController(this));
-        this.registerDataProxy(ConstName.PROXY_INSTALLATION,new InstallationProxy(this));
+        // this.registerDataProxy(ConstData.PLAYER_PROXY,new PlayerProxy(this));
         this.init();
     }
 
@@ -66,7 +65,7 @@ export default class CommandChannel{
     /** 
      * 注册数据处理中心
     */
-    public registerDataProxy(dataProxyName:number,dataProxy:DataProxy):void{
+    public registerDataProxy(dataProxyName:string,dataProxy:DataProxy):void{
         if(!this._dataProxyList.hasOwnProperty(dataProxyName)){
             this._dataProxyList[dataProxyName]=dataProxy;
         }

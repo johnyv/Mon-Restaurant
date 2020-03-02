@@ -15,18 +15,18 @@ export default class GameGlobal{
     public static  SCENE:number = 5;
     /**法宝类文件 */
     public static  FABAO:number = 6;
-    /**json类文件 */
-    public static  JSON:number = 7;
     /*统一资源根路径 */
     public static  RESOURCE_BASE_PATH:string = "./resource/";
     /**角色文件根路径 */
-    public static  RESOURCE_ROLE_PATH:string = "./resource/role/";
+    public static  RESOURCE_ROLE_PATH:string = "./resource/dynamics/role/";
     /**音效文件根路径 */
-    public static  RESOURCE_SOUND_PATH:string = "./resource/sound/";
+    public static  RESOURCE_SOUND_PATH:string = "./resource/dynamics/sound/";
+    /**子弹文件根路径 */
+    public static  RESOURCE_BULLET_PATH:string = "./resource/dynamics/bullet/";
     /**UI文件根路径 */
     public static  RESOURCE_UI_PATH:string = "./resource/ui/";
     /**scene文件根路径 */
     public static  RESOURCE_SCENE_PATH:string = "./resource/scene/";
-    /**json配置文件根路径 */
-    public static  RESOURCE_JSON_PATH:string = "./resource/json/";
+    /**法宝文件根路径 */
+    public static  RESOURCE_FABAO_PATH:string = "./resource/dynamics/faBao/";
 } 

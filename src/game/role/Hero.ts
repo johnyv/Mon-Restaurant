@@ -23,7 +23,7 @@ export default class Hero extends Role {
         var channel:CommandChannel = CommandChannel.instance;
         this.gameAni.x = Math.ceil(pos.x);
         this.gameAni.y = Math.ceil(pos.y);
-        var roleLayer:Laya.Sprite = channel.postCommand(ConstName.LAYER_CONTROLLER, ConstName.LAYER_GET_SCENE_LAYER_BY_NAME,ConstName.ROLE_LAYER) as Laya.Sprite;
+        var roleLayer:Laya.Sprite = channel.postCommand(ConstName.LAYER_CONTROLLER, ConstName.GET_SCENE_LAYER_BY_NAME,[ConstName.ROLE_LAYER]) as Laya.Sprite;
         roleLayer.addChild(this.gameAni);
         // for each(var faBao:FaBao in this._faBaoArr){
         //     roleLayer.addChild(faBao);

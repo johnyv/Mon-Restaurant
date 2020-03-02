@@ -10,6 +10,8 @@ export default class LoadManager extends BaseManager {
     public static getUrl(url, type: number = -1): string {
         if (type == GameGlobal.ROLE)
             return GameGlobal.RESOURCE_ROLE_PATH + url;
+        else if (type == GameGlobal.MUSIC)
+            return GameGlobal.RESOURCE_SOUND_PATH + url;
         else if (type == GameGlobal.SOUND) {
             if (Laya.Browser.onAndroid || Laya.Browser.onIOS) {
                 return GameGlobal.RESOURCE_SOUND_PATH + url + ".wav";
@@ -17,17 +19,15 @@ export default class LoadManager extends BaseManager {
                 return GameGlobal.RESOURCE_SOUND_PATH + url + ".mp3";
             }
         }
+        else if (type == GameGlobal.BULLET)
+            return GameGlobal.RESOURCE_BULLET_PATH + url;
         else if (type == GameGlobal.UI)
             return GameGlobal.RESOURCE_UI_PATH + url;
         else if (type == GameGlobal.SCENE)
             return GameGlobal.RESOURCE_SCENE_PATH + url;
-        else if (type == GameGlobal.JSON)
-            return GameGlobal.RESOURCE_JSON_PATH + url;
+        else if (type == GameGlobal.FABAO)
+            return GameGlobal.RESOURCE_FABAO_PATH + url;
         return GameGlobal.RESOURCE_BASE_PATH + url;
-    }
-
-    public static getIconUrl(type:string,id:number):string{
-        return "views/icon/" + type + "_" + id + ".png";
     }
 
     public static getRes(url, type: number = -1): any {

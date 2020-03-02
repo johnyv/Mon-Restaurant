@@ -20,7 +20,7 @@ class Main {
 		Laya.stage.alignH = "center";//设置水平居中对齐
 		//设置垂直居中对齐，Stage.ALIGN_MIDDLE 常量等价于 middle 字符串
 		Laya.stage.alignV = Laya.Stage.ALIGN_MIDDLE;
-		if(Laya.Browser.onPC) Laya.stage.screenMode = Laya.Stage.SCREEN_HORIZONTAL;
+
 		//兼容微信不支持加载scene后缀场景
 		Laya.URL.exportSceneToJson = GameConfig.exportSceneToJson;
 
@@ -32,8 +32,6 @@ class Main {
 		Laya.ClassUtils.regClass("component.Comp_scene_layer",Comp_scene_layer);
 		//激活资源版本控制，version.json由IDE发布功能自动生成，如果没有也不影响后续流程
 		Laya.ResourceVersion.enable("version.json", Laya.Handler.create(this, this.onVersionLoaded), Laya.ResourceVersion.FILENAME_VERSION);
-		CommandChannel.instance.init();
-
 	}/*  */
 
 	onVersionLoaded(): void {
@@ -44,7 +42,8 @@ class Main {
 	onConfigLoaded(): void {
 		//加载IDE指定的场景
 		// GameConfig.startScene && Laya.Scene.open(GameConfig.startScene);
-		// CommandChannel.instance.init();
+		CommandChannel.instance.init();
+
 		if(Laya.Browser.onMiniGame){
 			WeChatUtils.instance.login();
 		}

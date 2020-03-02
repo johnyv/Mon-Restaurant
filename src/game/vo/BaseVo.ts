@@ -3,7 +3,7 @@ export default class BaseVo{
 
     }
 
-    public init(obj,jsonObj:Object = null):void {
+    public init(obj,jsonObj:Object):void {
 
     }
 } 
