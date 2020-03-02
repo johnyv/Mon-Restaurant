@@ -2,11 +2,16 @@ import GameConfig from "./GameConfig";
 import CommandChannel from "./game/controller/CommandChannel";
 import ConstName from "./game/ConstName";
 import Comp_scene_layer from "./component/Comp_scene_layer";
+import WeChatUtils from "./game/platform/WeChatUtils";
 class Main {
 	constructor() {
 		//根据IDE设置初始化引擎		
 		if (window["Laya3D"]) Laya3D.init(GameConfig.width, GameConfig.height);
 		else Laya.init(GameConfig.width, GameConfig.height, Laya["WebGL"]);
+		// 微信
+		if(Laya.Browser.onMiniGame){
+			Laya.MiniAdpter.init(); 
+		}
 		Laya["Physics"] && Laya["Physics"].enable();
 		Laya["DebugPanel"] && Laya["DebugPanel"].enable();
 		Laya.stage.scaleMode = GameConfig.scaleMode;
@@ -40,6 +45,9 @@ class Main {
 		//加载IDE指定的场景
 		// GameConfig.startScene && Laya.Scene.open(GameConfig.startScene);
 		// CommandChannel.instance.init();
+		if(Laya.Browser.onMiniGame){
+			WeChatUtils.instance.login();
+		}
 	}
 }
 //激活启动类
